@@ -7,9 +7,15 @@ Dopo che sono stati inseriti i 5 numeri, il software mostra in un alert quanti e
 
 */
 
+// display
+var timerDisplay = document.getElementById('timer');
+
 
 
 var arrayNumeri = [];
+var userArray = [];
+var seconds = 30;
+
 
 
 
@@ -25,8 +31,52 @@ while (arrayNumeri.length < 5) {
     }
 }
 
+// alert on page
+
+alert('I tuoi 5 numeri sono: ' + arrayNumeri);
+
+// timeout 30 sec
+var game = setTimeout(function () {
+
+    for (i = 0; i < arrayNumeri.length; i++) {
+        var userNumber = parseInt(prompt('Inserisci un numero'));
+        // validazione se è un numero
+
+        while (numValidate(userNumber)) {
+            alert('Per favore inserire un numero!');
+            userNumber = parseInt(prompt('Inserisci un numero'));
+        };
+
+        // validazione doppione utente
+        while (userArray.includes(userNumber)) {
+            alert('Per favore inserire un numero!');
+            userNumber = parseInt(prompt('Inserisci un numero'));
+        };
+
+        // push se numero uguale ad array numeri generati
+        if (arrayNumeri.includes(userNumber)) {
+            userArray.push(userNumber);
+        };
+    }
+
+    alert('Hai indovinato ' + userArray.length + ' numeri ' + userArray);
+
+}, 30000);
+
+// countdown
 
 
+
+var countdown = setInterval(function () {
+
+    console.log(seconds--);
+    timerDisplay.innerText = seconds;
+
+    if (seconds === 0) {
+        clearInterval(countdown);
+        timerDisplay.innerText = "Time's up";
+    }
+}, 1000);
 
 
 
@@ -40,4 +90,14 @@ while (arrayNumeri.length < 5) {
 // Generate random number 
 function randomNumberGenerate(min, max) {
     return Math.floor(Math.random() * max - min + 1) + 1;
+}
+
+// number validate
+
+function numValidate(num) {
+    var isInvalid = false;
+    if (isNaN(num) || num <= 0 || !num || num == " ") {
+        isInvalid = true;
+    }
+    return isInvalid;
 }
