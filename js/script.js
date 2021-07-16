@@ -13,8 +13,13 @@ var timerDisplay = document.getElementById('timer');
 
 
 var arrayNumeri = [];
+
+//numeri vincenti
 var userArray = [];
+// scelte utente
+var userChoice = [];
 var seconds = 30;
+
 
 
 
@@ -45,23 +50,30 @@ var game = setTimeout(function () {
         while (numValidate(userNumber)) {
             alert('Per favore inserire un numero!');
             userNumber = parseInt(prompt('Inserisci un numero'));
-        };
+        }
 
-        // validazione doppione utente
-        while (userArray.includes(userNumber)) {
-            alert('Per favore inserire un numero!');
+        // controllo doppioni numeri inseriti da utente 
+        while (userChoice.includes(userNumber)) {
+            alert('Numero già scelto riprovare!');
             userNumber = parseInt(prompt('Inserisci un numero'));
-        };
 
-        // push se numero uguale ad array numeri generati
+        }
+
+        // push scelte utente per controllo doppioni
+        userChoice.push(userNumber);
+        console.log(userChoice);
+
+
+        // push numeri vincenti
         if (arrayNumeri.includes(userNumber)) {
             userArray.push(userNumber);
-        };
+        }
+
     }
 
     alert('Hai indovinato ' + userArray.length + ' numeri ' + userArray);
 
-}, 30000);
+}, 30500);
 
 // countdown
 
