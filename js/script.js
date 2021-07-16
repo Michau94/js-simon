@@ -9,6 +9,7 @@ Dopo che sono stati inseriti i 5 numeri, il software mostra in un alert quanti e
 
 // display
 var timerDisplay = document.getElementById('timer');
+var resultDisplay = document.getElementById('result');
 
 
 
@@ -44,18 +45,19 @@ alert('I tuoi 5 numeri sono: ' + arrayNumeri);
 var game = setTimeout(function () {
 
     for (i = 0; i < arrayNumeri.length; i++) {
-        var userNumber = parseInt(prompt('Inserisci un numero'));
+        var userNumber = askInfo();
         // validazione se è un numero
 
         while (numValidate(userNumber)) {
             alert('Per favore inserire un numero!');
-            userNumber = parseInt(prompt('Inserisci un numero'));
+            userNumber = askInfo();
         }
 
         // controllo doppioni numeri inseriti da utente 
         while (userChoice.includes(userNumber)) {
             alert('Numero già scelto riprovare!');
-            userNumber = parseInt(prompt('Inserisci un numero'));
+            userNumber = askInfo();
+
 
         }
 
@@ -71,7 +73,8 @@ var game = setTimeout(function () {
 
     }
 
-    alert('Hai indovinato ' + userArray.length + ' numeri ' + userArray);
+    //alert('Hai indovinato ' + userArray.length + ' numeri ' + userArray);
+    resultDisplay.innerText = 'Hai indovinato ' + userArray.length + ' numeri.' + userArray;
 
 }, 30500);
 
@@ -82,7 +85,7 @@ var game = setTimeout(function () {
 var countdown = setInterval(function () {
 
     console.log(seconds--);
-    timerDisplay.innerText = seconds;
+    timerDisplay.innerText = '00:' + seconds;
 
     if (seconds === 0) {
         clearInterval(countdown);
@@ -112,4 +115,10 @@ function numValidate(num) {
         isInvalid = true;
     }
     return isInvalid;
+}
+
+
+function askInfo() {
+    var num = parseInt(prompt('Inserisci un numero'))
+    return num;
 }
