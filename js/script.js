@@ -51,25 +51,22 @@ alert('I tuoi 5 numeri sono: ' + arrayNumeri);
 var game = setTimeout(function () {
 
     for (i = 0; i < arrayNumeri.length; i++) {
-        var userNumber = askInfo();
         // validazione se è un numero
+        do {
+            var userNumber = askInfo();
+            if (numValidate(userNumber)) {
+                alert('Per favore inserire un numero!');
+            }
+            if (userChoice.includes(userNumber)) {
+                alert('Numero già scelto riprovare!');
+            }
 
-        while (numValidate(userNumber)) {
-            alert('Per favore inserire un numero!');
-            userNumber;
-        }
-
-        // controllo doppioni numeri inseriti da utente 
-        while (userChoice.includes(userNumber)) {
-            alert('Numero già scelto riprovare!');
-            userNumber;
+        } while (numValidate(userNumber) || userChoice.includes(userNumber));
 
 
-        }
 
         // push scelte utente per controllo doppioni
         userChoice.push(userNumber);
-        console.log(userChoice);
 
 
         // push numeri vincenti
@@ -111,7 +108,7 @@ function randomNumberGenerate(min, max) {
 
 function numValidate(num) {
     var isInvalid = false;
-    if (isNaN(num) || num <= 0 || !num || num == " ") {
+    if (isNaN(num) || num <= 0 || num > 100 || !num || num == " ") {
         isInvalid = true;
     }
     return isInvalid;
