@@ -5,6 +5,9 @@ Non appena l'utente schiaccia "ok", parte un timer di 30 secondi. (Bonus: visual
 Al termine dei 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt(). (Bonus: far inserire i numeri da un form)
 Dopo che sono stati inseriti i 5 numeri, il software mostra in un alert quanti e quali dei numeri da indovinare sono stati individuati. (Bonus: stampare in pagina il risultato, in alternativa all'alert.)
 
+
+effettuato un diagramma invece degli step (mi sono trovato da DIO)
+
 */
 
 // display
@@ -13,11 +16,14 @@ var resultDisplay = document.getElementById('result');
 
 
 
+
+// numeri generati
 var arrayNumeri = [];
 
 //numeri vincenti
 var userArray = [];
-// scelte utente
+
+//  tutte scelte utente
 var userChoice = [];
 var seconds = 30;
 
@@ -50,13 +56,13 @@ var game = setTimeout(function () {
 
         while (numValidate(userNumber)) {
             alert('Per favore inserire un numero!');
-            userNumber = askInfo();
+            userNumber;
         }
 
         // controllo doppioni numeri inseriti da utente 
         while (userChoice.includes(userNumber)) {
             alert('Numero già scelto riprovare!');
-            userNumber = askInfo();
+            userNumber;
 
 
         }
@@ -78,6 +84,7 @@ var game = setTimeout(function () {
 
 }, 30500);
 
+
 // countdown
 
 
@@ -92,13 +99,6 @@ var countdown = setInterval(function () {
         timerDisplay.innerText = "Time's up";
     }
 }, 1000);
-
-
-
-
-
-
-
 
 // FUNCTION
 
