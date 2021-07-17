@@ -13,20 +13,30 @@
 </head>
 
 <body>
-    <div class="flex-c">
+    <div class="flex-c bg-grey">
+        <div class="flex-c">
 
-        <div class="infos">
-            <h1>Simon</h1>
-            <h2>Timer</h2>
-            <p id="timer">00:30</p>
-            <p id="result"></p>
+            <div class="infos ">
+                <h1>Simon</h1>
+                <h2>Timer</h2>
+
+                <div class="game">
+                    <h3 id="alert" class="hidden"></h3>
+
+                    <input type="number" id="number" placeholder="Type number here">
+                    <p id="timer">00:30</p>
+                    <p id="result"></p>
+                    <button id="play" class="hidden">Play</button>
+                    <button id="reset" class="hidden">Play Again</button>
+                </div>
+            </div>
         </div>
     </div>
 
 
 
 
-    <script src="./js/script.js"></script>
+    <script src="./js/bonus.js"></script>
 </body>
 
 </html>
